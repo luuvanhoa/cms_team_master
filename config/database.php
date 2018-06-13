@@ -117,4 +117,8 @@ return [
 
     ],
 
+    'mysql_table' => [
+        'CATEGORY_PRODUCT' => 'category_product',
+        'CATEGORY_ARTICLE' => 'category_article'
+    ]
 ];

@@ -47,15 +47,26 @@ Route::group(['prefix' => 'admin','middleware' => ['authadminRoute'] ], function
     Route::get( 'banner/del/{id}', ['as' => 'banner-del', 'uses' => 'Admin\BannerController@delBanner'] );
     // **** BANNER ****
 
-    // **** CATEGORIES ****
-    Route::get( 'category', ['as' => 'category', 'uses' => 'Admin\CategoryController@index'] );
-    Route::get( 'category/add', ['as' => 'category-add', 'uses' => 'Admin\CategoryController@addCategory'] );
-    Route::post( 'category/add', ['as' => 'category-add', 'uses' => 'Admin\CategoryController@postCategory'] );
-    Route::get( 'category/edit/{id}', ['as' => 'category-edit', 'uses' => 'Admin\CategoryController@editCategory'] );
-    Route::post( 'category/edit/{id}', ['as' => 'category-edit', 'uses' => 'Admin\CategoryController@storeCategory'] );
-    Route::get( 'category/del/{id}', ['as' => 'category-del', 'uses' => 'Admin\CategoryController@delCategory'] );
-    Route::post( 'category/change-status', ['as'=>'category-status', 'uses'=> 'Admin\CategoryController@changeStatus'] );
-    // **** CATEGORIES ****
+    // **** CATEGORIES ARTICLE ****
+    Route::get( 'article-category', ['as' => 'article-category', 'uses' => 'Admin\CategoryController@articleIndex'] );
+    Route::get( 'article-category/add', ['as' => 'article-category-add', 'uses' => 'Admin\CategoryController@articleAddCategory'] );
+    Route::post( 'article-category/add', ['as' => 'article-category-add', 'uses' => 'Admin\CategoryController@articlePostCategory'] );
+    Route::get( 'article-category/edit/{id}', ['as' => 'article-category-edit', 'uses' => 'Admin\CategoryController@articleEditCategory'] );
+    Route::post( 'article-category/edit/{id}', ['as' => 'article-category-edit', 'uses' => 'Admin\CategoryController@articleStoreCategory'] );
+    Route::get( 'article-category/del/{id}', ['as' => 'article-category-del', 'uses' => 'Admin\CategoryController@articleDelCategory'] );
+    Route::post( 'article-category/change-status', ['as'=>'article-category-status', 'uses'=> 'Admin\CategoryController@articleChangeStatus'] );
+    // **** CATEGORIES ARTICLE ****
+
+    // **** CATEGORIES PRODUCT ****
+    Route::get( 'product-category', ['as' => 'product-category', 'uses' => 'Admin\CategoryController@productIndex'] );
+    Route::get( 'product-category/add', ['as' => 'product-category-add', 'uses' => 'Admin\CategoryController@productAdd'] );
+    Route::post( 'product-category/add', ['as' => 'product-category-add', 'uses' => 'Admin\CategoryController@productPost'] );
+    Route::get( 'product-category/edit/{id}', ['as' => 'product-category-edit', 'uses' => 'Admin\CategoryController@productEdit'] );
+    Route::post( 'product-category/edit/{id}', ['as' => 'product-category-edit', 'uses' => 'Admin\CategoryController@productStore'] );
+    Route::get( 'product-category/del/{id}', ['as' => 'product-category-del', 'uses' => 'Admin\CategoryController@productDelete'] );
+    Route::post( 'product-category/change-status', ['as'=>'product-category-status', 'uses'=> 'Admin\CategoryController@productChangeStatus'] );
+    // **** CATEGORIES PRODUCT ****
+
 
     // **** PRODUCT ****
     Route::get( 'post', ['as' => 'post', 'uses' => 'Admin\PostController@index'] );
