@@ -43,6 +43,7 @@ class Category extends Model
             'show_frontend_footer' => isset($data['show_frontend_footer']) ? $data['show_frontend_footer'] : 0,
             'image' => isset($data['image']) ? $data['image'] : null,
             'status' => isset($data['status']) ? $data['status'] : 0,
+            'parent' => isset($data['parent']) ? $data['parent'] : 0,
             'description' => isset($data['description']) ? $data['description'] : null,
             'options' => isset($data['options']) ? $data['options'] : null,
             'meta_description' => isset($data['meta_description']) ? $data['meta_description'] : null,

@@ -10,10 +10,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    public $_table_list;
 
-    public function __construct()
+    public function findById($model, $id)
     {
-        $this->_table_list = \Illuminate\Support\Facades\Config::get('database.mysql_table');
+        return $model::find($id);
     }
 }

@@ -2,37 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47da2d8f-c602-4b0f-95e3-ade61a8071d7" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Requests/BannerRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/BannerRequest.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Requests/CategoryRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/CategoryRequest.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Requests/LoginAdminRquest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/LoginAdminRquest.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Requests/PostRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/PostRequest.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Requests/ProductRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/ProductRequest.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Requests/Request.php" afterPath="$PROJECT_DIR$/app/Http/Requests/Request.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Category.php" afterPath="$PROJECT_DIR$/app/Category.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Nested.php" afterPath="$PROJECT_DIR$/app/Nested.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_030818_create_setting_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_030818_create_setting_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_030831_create_privilege_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_030831_create_privilege_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_030910_create_articles_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_030910_create_articles_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_031011_create_object_article_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_031011_create_object_article_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_031025_create_category_article_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_031025_create_category_article_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_031031_create_tag_article_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_031031_create_tag_article_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_031038_create_author_article_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_031038_create_author_article_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_031047_create_products_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_031047_create_products_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_031054_create_object_product_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_031054_create_object_product_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_031108_create_category_product_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_031108_create_category_product_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_031117_create_tag_product_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_031117_create_tag_product_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_031123_create_attributes_product_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_031123_create_attributes_product_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_031134_create_order_product_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_031134_create_order_product_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_040618_create_menu_admin_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_040618_create_menu_admin_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2018_06_13_044812_create_order_detail_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_06_13_044812_create_order_detail_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/admin/css/custom.css" afterPath="$PROJECT_DIR$/public/admin/css/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/categories/edit-category.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/categories/edit-category.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/categories/form-category.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/categories/form-category.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,15 +17,36 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CategoryController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CategoryController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="101" column="60" lean-forward="false" selection-start-line="101" selection-start-column="60" selection-end-line="101" selection-end-column="60" />
+            <state relative-caret-position="350">
+              <caret line="136" column="30" lean-forward="true" selection-start-line="136" selection-start-column="30" selection-end-line="136" selection-end-column="30" />
               <folding>
                 <element signature="e#46#63#0#PHP" expanded="true" />
-                <element signature="e#4119#4666#0#PHP" expanded="false" />
+                <element signature="e#824#1059#0#PHP" expanded="false" />
+                <element signature="e#4790#5337#0#PHP" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Nested.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Nested.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="20" column="20" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="13" column="41" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form-category.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="form-category.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/form-category.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-35">
-              <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+            <state relative-caret-position="649">
+              <caret line="178" column="14" lean-forward="true" selection-start-line="178" selection-start-column="14" selection-end-line="178" selection-end-column="14" />
               <folding>
                 <marker date="1528969090896" expanded="true" signature="1203:1414" ph="..." />
                 <marker date="1528969090896" expanded="true" signature="1215:1412" ph="..." />
@@ -101,8 +95,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="66" column="82" lean-forward="false" selection-start-line="66" selection-start-column="59" selection-end-line="66" selection-end-column="82" />
+            <state relative-caret-position="407">
+              <caret line="60" column="63" lean-forward="false" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -111,8 +105,8 @@
       <file leaf-file-name="custom.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/admin/css/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="573">
-              <caret line="4256" column="20" lean-forward="false" selection-start-line="4256" selection-start-column="20" selection-end-line="4256" selection-end-column="20" />
+            <state relative-caret-position="787">
+              <caret line="4274" column="1" lean-forward="false" selection-start-line="4274" selection-start-column="1" selection-end-line="4274" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -121,8 +115,8 @@
       <file leaf-file-name="Category.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Category.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="54" column="5" lean-forward="true" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+            <state relative-caret-position="440">
+              <caret line="43" column="69" lean-forward="true" selection-start-line="43" selection-start-column="69" selection-end-line="43" selection-end-column="69" />
               <folding>
                 <element signature="e#23#62#0#PHP" expanded="true" />
               </folding>
@@ -154,10 +148,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Gentelella Alela</find>
-      <find>register</find>
-      <find>projectzvn\vendor\laravel\framework\src\Illuminate\Database\Migrations\Migrator.php</find>
-      <find>breadcrumbs_no_url</find>
       <find>product</find>
       <find>bootstrap-progressbar-3.3.4.min.css</find>
       <find>&lt;img src=&quot;images/img.jpg&quot; alt=&quot;...&quot; class=&quot;img-circle profile_img&quot;&gt;</find>
@@ -181,9 +171,13 @@
       <find>-&gt;default(</find>
       <find>'',</find>
       <find>updateNode(</find>
-      <find>updateNode</find>
-      <find>App\Http\Requests\CategoryRequest</find>
       <find>category-edit</find>
+      <find>updateNode</find>
+      <find>$data['parent']</find>
+      <find>::find</find>
+      <find>App\Http\Requests\CategoryRequest</find>
+      <find>product-category</find>
+      <find>'product-category'</find>
     </findStrings>
     <replaceStrings>
       <replace>CMS - Team Master</replace>
@@ -225,7 +219,6 @@
         <option value="$PROJECT_DIR$/app/Requests/ProductRequest.php" />
         <option value="$PROJECT_DIR$/public/defined.php" />
         <option value="$PROJECT_DIR$/config/database.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Controller.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/dashboard/dashboard.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/admin/footer.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/admin/sidebar.blade.php" />
@@ -247,14 +240,15 @@
         <option value="$PROJECT_DIR$/database/migrations/2018_06_13_040618_create_menu_admin_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_06_13_044812_create_order_detail_table.php" />
         <option value="$PROJECT_DIR$/app/Nested.php" />
-        <option value="$PROJECT_DIR$/app/Category.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" />
-        <option value="$PROJECT_DIR$/public/admin/css/custom.css" />
         <option value="$PROJECT_DIR$/resources/views/admin/categories/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/categories/edit-category.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/categories/form-category.blade.php" />
+        <option value="$PROJECT_DIR$/public/admin/css/custom.css" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Controller.php" />
+        <option value="$PROJECT_DIR$/app/Category.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" />
       </list>
     </option>
   </component>
@@ -353,55 +347,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projectzvn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projectzvn" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projectzvn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="projectzvn" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="categories" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -638,12 +584,12 @@
       <option name="presentableId" value="Default" />
       <updated>1528855583601</updated>
       <workItem from="1528855585333" duration="24811000" />
-      <workItem from="1528939498553" duration="21458000" />
+      <workItem from="1528939498553" duration="23881000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46269000" />
+    <option name="totallyTimeSpent" value="48692000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -801,14 +747,6 @@
           <folding>
             <element signature="e#6#90#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -980,16 +918,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Nested.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1292">
-          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/img/upload/category/00aeaed7ea07f8f1fc6a5f1b9ce1b674ddebacf9.jpeg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1013,33 +941,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="66" column="82" lean-forward="false" selection-start-line="66" selection-start-column="59" selection-end-line="66" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/admin/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="4256" column="20" lean-forward="false" selection-start-line="4256" selection-start-column="20" selection-end-line="4256" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="101" column="60" lean-forward="false" selection-start-line="101" selection-start-column="60" selection-end-line="101" selection-end-column="60" />
-          <folding>
-            <element signature="e#46#63#0#PHP" expanded="true" />
-            <element signature="e#4119#4666#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -1048,21 +949,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="54" column="5" lean-forward="true" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/admin.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="516">
           <caret line="45" column="69" lean-forward="false" selection-start-line="45" selection-start-column="69" selection-end-line="45" selection-end-column="69" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/admin/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="787">
+          <caret line="4274" column="1" lean-forward="false" selection-start-line="4274" selection-start-column="1" selection-end-line="4274" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/form-category.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="178" column="14" lean-forward="true" selection-start-line="178" selection-start-column="14" selection-end-line="178" selection-end-column="14" />
+          <folding>
+            <marker date="1528969090896" expanded="true" signature="1203:1414" ph="..." />
+            <marker date="1528969090896" expanded="true" signature="1215:1412" ph="..." />
+            <marker date="1528969090896" expanded="true" signature="1221:1411" ph="..." />
+            <marker date="1528969090896" expanded="true" signature="1903:2028" ph="..." />
+            <marker date="1528969090896" expanded="true" signature="1917:2026" ph="..." />
+            <marker date="1528969090896" expanded="true" signature="2995:3160" ph="..." />
+            <marker date="1528969090896" expanded="true" signature="3009:3158" ph="..." />
+            <marker date="1528969090896" expanded="true" signature="3633:3796" ph="..." />
+            <marker date="1528969090896" expanded="true" signature="3647:3794" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1085,20 +1002,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/categories/form-category.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Nested.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-35">
-          <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+        <state relative-caret-position="294">
+          <caret line="20" column="20" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="43" column="69" lean-forward="true" selection-start-line="43" selection-start-column="69" selection-end-line="43" selection-end-column="69" />
           <folding>
-            <marker date="1528969090896" expanded="true" signature="1203:1414" ph="..." />
-            <marker date="1528969090896" expanded="true" signature="1215:1412" ph="..." />
-            <marker date="1528969090896" expanded="true" signature="1221:1411" ph="..." />
-            <marker date="1528969090896" expanded="true" signature="1903:2028" ph="..." />
-            <marker date="1528969090896" expanded="true" signature="1917:2026" ph="..." />
-            <marker date="1528969090896" expanded="true" signature="2995:3160" ph="..." />
-            <marker date="1528969090896" expanded="true" signature="3009:3158" ph="..." />
-            <marker date="1528969090896" expanded="true" signature="3633:3796" ph="..." />
-            <marker date="1528969090896" expanded="true" signature="3647:3794" ph="..." />
+            <element signature="e#23#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="13" column="41" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="60" column="63" lean-forward="false" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="136" column="30" lean-forward="true" selection-start-line="136" selection-start-column="30" selection-end-line="136" selection-end-column="30" />
+          <folding>
+            <element signature="e#46#63#0#PHP" expanded="true" />
+            <element signature="e#824#1059#0#PHP" expanded="false" />
+            <element signature="e#4790#5337#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

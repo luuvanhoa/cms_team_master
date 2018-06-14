@@ -20,7 +20,6 @@ class CategoryController extends Controller
 
     public function __construct()
     {
-        parent::__construct();
         $this->_nestedCateProduct = new Nested(array(
             'table' => 'category_product',
             'model' => 'Category'
@@ -65,7 +64,7 @@ class CategoryController extends Controller
     {
         $id = $request->get('id');
         $status = $request->get('status');
-        $category = Category::find($id);
+        $category = $this->findById($this->_modelCategory, $id);
         $category->status = $status;
         $category->save();
     }
@@ -96,8 +95,7 @@ class CategoryController extends Controller
      */
     public function productEdit($id)
     {
-        $model = $this->_modelCategory;
-        $category = $model::find($id);
+        $category = $this->findById($this->_modelCategory, $id);
         $breadcrumbs = array('category-edit', $category);
         $categories = DB::table($this->_modelCategory->table)
             ->where('left', '>', 0)
@@ -113,24 +111,39 @@ class CategoryController extends Controller
      */
     public function productStore($id, Request $request)
     {
-        $data = array(
-            'name' => $request->get('name'),
-            'slug' => $request->get('slug'),
-            'status' => $request->get('status'),
-            'description' => $request->get('description'),
-            'parent' => $request->get('parent')
-        );
+        $data = $this->_modelCategory->mapsDataDefault($request->all());
+        if (!empty($request->file('image'))) {
+            $image = $request->file('image');
+            $data['image'] = Images::createImage($image);
+        }
+        if (isset($data['parent']) && $data['parent'] == $id) {
+            $data['parent'] = null;
+        }
+        $data['modified_time'] = date('Y-m-d H:i:s');
+        $this->updateNodeCategoryProduct($data, $id, $data['parent']);
+        return redirect(route('product-category'));
+    }
 
-        $image = $request->file('image');
-        if (!empty($image)) {
-            $data['image'] = $this->createImage($image);
+    protected function updateNodeCategoryProduct($data, $nodeID, $nodeParentID = null)
+    {
+        if (!empty($nodeParentID)) {
+            $nodeParentInfo = $this->findById($this->_modelCategory, $nodeParentID);
+            $nodeInfo = $this->findById($this->_modelCategory, $nodeID);
+            if (!empty($nodeParentInfo) && $nodeInfo->parent != $nodeParentInfo->id) {
+                $this->_nestedCateProduct->moveRight($nodeID, $nodeParentID);
+            }
         }
 
-        if ($data['parent'] == $id)
-            $data['parent'] = null;
+        $dataUpdate = array();
+        foreach ($data as $k => $v) {
+            if ($v != null) {
+                $dataUpdate[$k] = $v;
+            }
+        }
 
-        $this->updateNode($data, $id, $data['parent']);
-        return redirect('/admin/category');
+        DB::table($this->_modelCategory->table)
+            ->where('id', $nodeID)
+            ->update($dataUpdate);
     }
 
     /**
