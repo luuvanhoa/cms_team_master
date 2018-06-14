@@ -19,26 +19,26 @@ class CreateCategoryArticleTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('name');
             $table->string('catecode');
-            $table->integer('position_header')->default(1);
+            $table->integer('position_header')->nullable(true)->default(1);
             $table->integer('show_frontend_header');
-            $table->integer('position_footer')->default(1);
+            $table->integer('position_footer')->nullable(true)->default(1);
             $table->integer('show_frontend_footer');
-            $table->string('image');
-            $table->boolean('status')->default(1); // 1 show, 0 hidden
-            $table->string('description');
-            $table->string('options');
-            $table->string('meta_description');
-            $table->string('meta_title');
-            $table->string('meta_keyword');
-            $table->dateTime('created_time');
-            $table->dateTime('modified_time');
+            $table->string('image')->nullable(true)->default(null);
+            $table->boolean('status')->nullable(true)->default(1); // 1 show, 0 hidden
+            $table->string('description')->nullable(true)->default(null);
+            $table->string('options')->nullable(true)->default(null);
+            $table->string('meta_description')->nullable(true)->default(null);
+            $table->string('meta_title')->nullable(true)->default(null);
+            $table->string('meta_keyword')->nullable(true)->default(null);
+            $table->dateTime('created_time')->nullable(true)->default(null);
+            $table->dateTime('modified_time')->nullable(true)->default(null);
 
             // nested
             $table->string('fullcate_parent');
-            $table->integer('parent')->default(0);
+            $table->integer('parent')->nullable(true)->default(0);
             $table->integer('left');
             $table->integer('right');
-            $table->integer('level')->default(0);
+            $table->integer('level')->nullable(true)->default(0);
 
             $table->timestamps();
         });

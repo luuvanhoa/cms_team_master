@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Nested extends Model
 {
@@ -20,8 +21,12 @@ class Nested extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $model = ucfirst($attributes['model']);
-        $this->_model = new $model();
+
+        $attributes['model'] = (!isset($attributes['model']) || !empty($attributes['model'])) ? 'Category' : $attributes['model'];
+        $attributes['table'] = (!isset($attributes['table']) || !empty($attributes['table'])) ? 'category_product' : $attributes['table'];
+
+        $model = "App\\" . ucfirst($attributes['model']);
+        $this->_model = new $model;
         $this->_table = $attributes['table'];
     }
 
@@ -33,33 +38,6 @@ class Nested extends Model
     public function createRows($model, $data)
     {
         return $model::create($data);
-    }
-
-    /**
-     * @param $data
-     * @param $nodeID
-     * @param null $nodeParentID
-     * @param null $options
-     */
-    public function updateNode($data, $nodeID, $nodeParentID = null, $options = null)
-    {
-        if (!empty($nodeParentID)) {
-            $nodeParentInfo = $this->findById($this->_model, $nodeParentID);
-            $nodeInfo = $this->findById($this->_model, $nodeID);
-            if (!empty($nodeParentInfo) && $nodeInfo->parent != $nodeParentInfo->id) {
-                $this->moveRight($nodeID, $nodeParentID);
-            }
-        }
-        DB::table($this->_table)
-            ->where('id', $nodeID)
-            ->update([
-                'name' => $data['name'],
-                'status' => $data['status'],
-                'description' => $data['description'],
-                'parent' => $data['parent'],
-                'slug' => $data['slug'],
-                'image' => $data['image']
-            ]);
     }
 
     /**
@@ -229,7 +207,7 @@ class Nested extends Model
         }
 
         if ($options['task'] == 'remove-node') {
-            $d = DB::table($this->_table)
+            DB::table($this->_table)
                 ->whereBetween('left', [(int)$moveInfo->left, (int)$moveInfo->right])
                 ->delete();
         }

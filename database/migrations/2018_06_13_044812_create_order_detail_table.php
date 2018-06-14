@@ -16,14 +16,14 @@ class CreateOrderDetailTable extends Migration
         Schema::create('order_detail', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('address');
-            $table->string('total_payment');
-            $table->string('note');
-            $table->integer('status');
+            $table->string('email')->nullable(true)->default(null);
+            $table->string('phone')->nullable(true)->default(null);
+            $table->string('address')->nullable(true)->default(null);
+            $table->string('total_payment')->nullable(true)->default(null);
+            $table->string('note')->nullable(true)->default(null);
+            $table->integer('status')->nullable(true)->default(1);
             $table->dateTime('created_time');
-            $table->dateTime('modified_time');
+            $table->dateTime('modified_time')->nullable(true)->default(null);
         });
     }
 

@@ -16,12 +16,12 @@ class CreateAuthorArticleTable extends Migration
         Schema::create('author_article', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('author_name');
-            $table->string('description');
-            $table->integer('avatar');
-            $table->integer('share_url');
-            $table->integer('status');
-            $table->dateTime('created_time');
-            $table->dateTime('modified_time');
+            $table->string('description')->nullable(true)->default(null);
+            $table->integer('avatar')->nullable(true)->default(null);
+            $table->integer('share_url')->nullable(true)->default(null);
+            $table->integer('status')->nullable(true)->default(0);
+            $table->dateTime('created_time')->nullable(true)->default(null);
+            $table->dateTime('modified_time')->nullable(true)->default(null);
             $table->timestamps();
         });
     }

@@ -16,9 +16,9 @@ class CreateAttributesProductTable extends Migration
         Schema::create('attributes_product', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('name');
-            $table->integer('status');
-            $table->dateTime('created_time');
-            $table->dateTime('modified_time');
+            $table->integer('status')->nullable(true)->default(1);
+            $table->dateTime('created_time')->nullable(true)->default(null);
+            $table->dateTime('modified_time')->nullable(true)->default(null);
             $table->timestamps();
         });
     }

@@ -1,13 +1,5 @@
 @extends('layouts.admin')
 
-@section('breadcrumbs_no_url')
-	<div class="row">
-		<div class="col-xs-12 col-sm-7 col-md-7 col-lg-6">
-			<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-th-list"></i> Danh sách danh mục</h1>
-		</div>
-	</div>
-@endsection
-
 @section('content')
 	<section id="widget-grid" class="">
 		<div class="row">
@@ -25,31 +17,35 @@
 								<thead>
 									<tr>
 										<th>Tên danh mục</th>
-										<th>Tình trạng</th>
+										<th>Catecode</th>
+										<th>Level</th>
+										<th>Position FE</th>
+										<th>Position Footer</th>
 										<th>Thao tác</th>
 									</tr>
 								</thead>
 								<tbody>
 								@if (!empty($categories))
 									@foreach($categories as $key => $category)
-										<?php $line = '';?>
-										<?php if($category->level > 1) $line = '|';?>
-										<?php $space = str_repeat('——', $category->level - 1);?>
-										<?php if($category->status == 0)
-												$status = '<i data-toggle="tooltip" title="Hiển thị danh mục này?" onclick="changeStatus('.$category->id.', '.$category->status.')" class="fa fa-minus-circle inactive-red"></i>';
-											 else $status = '<i data-toggle="tooltip" title="Ẩn danh mục này?" onclick="changeStatus('.$category->id.', '.$category->status.')" class="fa fa-chevron-circle-down active-blue"></i>';?>
+										<?php
+                                        $space = str_repeat('|----------------------', $category->level - 1);
+                                        if ($category->status == 0) {
+                                            $status = '<i data-toggle="tooltip" title="Hiển thị danh mục này?" onclick="changeStatus(' . $category->id . ', ' . $category->status . ')" class="fa fa-minus-circle inactive-red"></i>';
+                                        } else {
+                                            $status = '<i data-toggle="tooltip" title="Ẩn danh mục này?" onclick="changeStatus(' . $category->id . ', ' . $category->status . ')" class="fa fa-chevron-circle-down active-blue"></i>';
+                                        }?>
 										<tr>
-											<td><div class="line-cate">{{$line.$space}}</div> <a href="{{route('category-edit',$category->id)}}"> {{$category->name}}</a></td>
-											<td class="status-td" id="{{$category->id}}">{!!$status!!}</td>
-											<td class="action-td" role="gridcell" aria-describedby="jqgrid_act">
-												<a href="{{route('category-edit',$category->id)}}" data-toggle="tooltip"
-													title="Chỉnh sửa danh mục" class="btn btn-xs btn-default">
+											<td><div class="line-cate">{{$space . $category->name}}</div></td>
+											<td align="center">{{$category->catecode}}</td>
+											<td align="center">{{$category->level}}</td>
+											<td align="center">{{$category->position_header}}</td>
+											<td align="center">{{$category->position_footer}}</td>
+
+											<td align="center" class="action-td" role="gridcell" aria-describedby="jqgrid_act">
+												<a href="{{route('product-category-edit',$category->id)}}" data-toggle="tooltip" title="Chỉnh sửa danh mục" class="btn btn-xs btn-default">
 													<i class="fa fa-pencil"></i>
 												</a>
-												<a href="{{route('category-del',$category->id)}}" data-toggle="tooltip"
-													title="Xóa danh mục" class="btn btn-xs btn-default">
-													<i class="fa fa-times"></i>
-												</a>
+												<div class="btn-action" id="{{$category->id}}">{!! $status !!}</div>
 											</td>
 										</tr>
 									@endforeach
@@ -65,13 +61,13 @@
 
 @endsection
 
-@section('content_js')
+@section('footer_js')
 <script type="text/javascript">
 	function changeStatus(id,status){
 		var status_change = (status == 0) ? 1 : 0;
 		$.ajax({
 		    type 	: "POST",
-		    url		: "<?php echo route('category-status');?>",
+		    url		: "<?php echo route('product-category-status');?>",
 		    headers : {'X-CSRF-TOKEN': token},
 		    data 	: {
 		        id	: id,

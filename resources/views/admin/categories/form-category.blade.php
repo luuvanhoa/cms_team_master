@@ -157,7 +157,7 @@
 									<div class="form-group">
 										<label class="col-md-2 control-label">Meta Description</label>
 										<div class="col-md-8">
-											{!! Form::text('meta_description', '', array('class' => 'form-control', 'placeholder' => 'Catecode')) !!}
+											{!! Form::text('meta_description', '', array('class' => 'form-control', 'placeholder' => 'Meta Description')) !!}
 										</div>
 									</div>
 									<div class="form-group">

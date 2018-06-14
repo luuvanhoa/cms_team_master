@@ -17,9 +17,9 @@ class CreateSettingTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('key_option');
             $table->longText('value_options');
-            $table->string('description');
+            $table->string('description')->nullable(true)->default(null);
             $table->dateTime('created_time');
-            $table->dateTime('modified_time');
+            $table->dateTime('modified_time')->nullable(true)->default(null);
             $table->timestamps();
         });
     }

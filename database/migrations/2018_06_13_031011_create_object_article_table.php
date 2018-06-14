@@ -15,12 +15,12 @@ class CreateObjectArticleTable extends Migration
     {
         Schema::create('object_article', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->integer('object_id');
-            $table->integer('object_type');
-            $table->integer('article_id');
-            $table->integer('status');
-            $table->dateTime('created_time');
-            $table->dateTime('modified_time');
+            $table->integer('object_id')->nullable(true)->default(0);
+            $table->integer('object_type')->nullable(true)->default(0);
+            $table->integer('article_id')->nullable(true)->default(0);
+            $table->integer('status')->nullable(true)->default(0);
+            $table->dateTime('created_time')->nullable(true)->default(null);
+            $table->dateTime('modified_time')->nullable(true)->default(null);
             $table->timestamps();
         });
     }

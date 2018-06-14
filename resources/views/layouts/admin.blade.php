@@ -16,7 +16,7 @@
 
 	@yield('header_css')
 
-	{!! Html::style('admin/css/custom.min.css') !!}
+	{!! Html::style('admin/css/custom.css') !!}
 
 	<!-- FAVICONS -->
 	<link rel="shortcut icon" href="{{asset('admin/images/favicon.ico')}}" type="image/x-icon">
@@ -43,7 +43,7 @@
 
 	{!! Html::script('admin/vendors/jquery/dist/jquery.min.js') !!}
 	{!! Html::script('admin/vendors/bootstrap/dist/js/bootstrap.min.js') !!}
-
+	<script>var token = $('meta[name="csrf_token"]').attr("content");</script>
 	@yield('footer_js')
 
 	{!! Html::script('admin/vendors/fastclick/lib/fastclick.js') !!}
