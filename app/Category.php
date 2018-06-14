@@ -1,11 +1,7 @@
 <?php
 
 namespace App;
-
-
-use Illuminate\Database\Eloquent\Model;
-
-class Category extends Model
+class Category extends Nested
 {
     protected $fillable = [
         'name',
@@ -36,7 +32,8 @@ class Category extends Model
         return $this->hasMany('App\Products');
     }
 
-    public function articles(){
+    public function articles()
+    {
         return $this->hasMany('App\Articles');
     }
 

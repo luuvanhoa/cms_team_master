@@ -2,7 +2,6 @@
 
 namespace App;
 
-
 use Illuminate\Database\Eloquent\Model;
 
 class Nested extends Model
@@ -14,6 +13,28 @@ class Nested extends Model
         'right'
     ];
 
+    protected $_table = '';
+
+    protected $_model = null;
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $model = ucfirst($attributes['model']);
+        $this->_model = new $model();
+        $this->_table = $attributes['table'];
+    }
+
+    public function findById($model, $id)
+    {
+        return $model::find($id);
+    }
+
+    public function createRows($model, $data)
+    {
+        return $model::create($data);
+    }
+
     /**
      * @param $data
      * @param $nodeID
@@ -23,13 +44,13 @@ class Nested extends Model
     public function updateNode($data, $nodeID, $nodeParentID = null, $options = null)
     {
         if (!empty($nodeParentID)) {
-            $nodeParentInfo = $this->find($nodeParentID);
-            $nodeInfo = Categories::find($nodeID);
+            $nodeParentInfo = $this->findById($this->_model, $nodeParentID);
+            $nodeInfo = $this->findById($this->_model, $nodeID);
             if (!empty($nodeParentInfo) && $nodeInfo->parent != $nodeParentInfo->id) {
                 $this->moveRight($nodeID, $nodeParentID);
             }
         }
-        DB::table('categories')
+        DB::table($this->_table)
             ->where('id', $nodeID)
             ->update([
                 'name' => $data['name'],
@@ -49,27 +70,27 @@ class Nested extends Model
      */
     public function insertNode($data, $nodeID, $options)
     {
-        $nodeInfo = Categories::find($nodeID);
+        $nodeInfo = $this->findById($this->_model, $nodeID);
         switch ($options['position']) {
             case 'left':
-                $updateLeft = DB::table('categories')->where('left', '>', $nodeInfo['left'])->get();
-                $updateRight = DB::table('categories')->where('right', '>', $nodeInfo['left']);
+                $updateLeft = DB::table($this->_table)->where('left', '>', $nodeInfo['left'])->get();
+                $updateRight = DB::table($this->_table)->where('right', '>', $nodeInfo['left']);
                 $data['parent'] = $nodeInfo->id;
                 $data['level'] = $nodeInfo->level + 1;
                 $data['left'] = $nodeInfo->left + 1;
                 $data['right'] = $nodeInfo->left + 2;
                 break;
             case 'before':
-                $updateLeft = DB::table('categories')->where('left', '>=', $nodeInfo['left'])->get();
-                $updateRight = DB::table('categories')->where('right', '>', $nodeInfo['left'])->get();
+                $updateLeft = DB::table($this->_table)->where('left', '>=', $nodeInfo['left'])->get();
+                $updateRight = DB::table($this->_table)->where('right', '>', $nodeInfo['left'])->get();
                 $data['parent'] = $nodeInfo->parent;
                 $data['level'] = $nodeInfo->level;
                 $data['left'] = $nodeInfo->left;
                 $data['right'] = $nodeInfo->left + 1;
                 break;
             case 'after':
-                $updateLeft = DB::table('categories')->where('left', '>=', $nodeInfo['right'])->get();
-                $updateRight = DB::table('categories')->where('right', '>', $nodeInfo['right'])->get();
+                $updateLeft = DB::table($this->_table)->where('left', '>=', $nodeInfo['right'])->get();
+                $updateRight = DB::table($this->_table)->where('right', '>', $nodeInfo['right'])->get();
                 $data['parent'] = $nodeInfo->parent;
                 $data['level'] = $nodeInfo->level;
                 $data['left'] = $nodeInfo->right + 1;
@@ -77,8 +98,8 @@ class Nested extends Model
                 break;
             case 'right':
             default:
-                $updateLeft = DB::table('categories')->where('left', '>', $nodeInfo['right'])->get();
-                $updateRight = DB::table('categories')->where('right', '>=', $nodeInfo['right'])->get();
+                $updateLeft = DB::table($this->_table)->where('left', '>', $nodeInfo['right'])->get();
+                $updateRight = DB::table($this->_table)->where('right', '>=', $nodeInfo['right'])->get();
                 $data['parent'] = $nodeInfo->id;
                 $data['level'] = $nodeInfo->level + 1;
                 $data['left'] = $nodeInfo->right;
@@ -88,17 +109,17 @@ class Nested extends Model
 
         if (!empty($updateLeft)) {
             foreach ($updateLeft as $left) {
-                DB::table('categories')->where('id', $left->id)->update(['left' => $left->left + 2]);
+                DB::table($this->_table)->where('id', $left->id)->update(['left' => $left->left + 2]);
             }
         }
 
         if (!empty($updateRight)) {
             foreach ($updateRight as $right) {
-                DB::table('categories')->where('id', $right->id)->update(['right' => $right->right + 2]);
+                DB::table($this->_table)->where('id', $right->id)->update(['right' => $right->right + 2]);
             }
         }
 
-        Categories::create($data);
+        $this->createRows($this->_model, $data);
         return true;
     }
 
@@ -111,18 +132,18 @@ class Nested extends Model
         // ========================= Detach branch =========================
         $totalNode = $this->detachBranch($nodeMoveID);
 
-        $nodeSelectionInfo = Categories::find($nodeSelectionID);
-        $nodeMoveInfo = Categories::find($nodeMoveID);
+        $nodeSelectionInfo = $this->findById($this->_model, $nodeSelectionID);
+        $nodeMoveInfo = $this->findById($this->_model, $nodeMoveID);
 
         // ========================= Node on tree (LEFT) =========================
-        $updateLeft = DB::table('categories')
+        $updateLeft = DB::table($this->_table)
             ->where('left', '>', $nodeSelectionInfo->right)
             ->where('right', '>', 0)
             ->get();
         if (!empty($updateLeft)) {
             foreach ($updateLeft as $node) {
                 $leftNew = $node->left + ($totalNode * 2);
-                DB::table('categories')
+                DB::table($this->_table)
                     ->where('id', $node->id)
                     ->update([
                         'left' => $leftNew
@@ -131,13 +152,13 @@ class Nested extends Model
         }
 
         // ========================= Node on tree (RIGHT) =========================
-        $updateRight = DB::table('categories')
+        $updateRight = DB::table($this->_table)
             ->where('right', '>=', $nodeSelectionInfo->right)
             ->get();
         if (!empty($updateRight)) {
             foreach ($updateRight as $node) {
                 $rightNew = $node->right + ($totalNode * 2);
-                DB::table('categories')
+                DB::table($this->_table)
                     ->where('id', $node->id)
                     ->update([
                         'right' => $rightNew
@@ -146,7 +167,7 @@ class Nested extends Model
         }
 
         // ========================= Node on branch (LEVEL) =========================
-        $updateLevel = DB::table('categories')
+        $updateLevel = DB::table($this->_table)
             ->where('right', '<=', 0)
             ->get();
         if (!empty($updateLevel)) {
@@ -158,7 +179,7 @@ class Nested extends Model
                 // ========================= Node on branch (RIGHT) =========================
                 $right = $node->right + $nodeSelectionInfo->right + $totalNode * 2 - 1;
 
-                DB::table('categories')
+                DB::table($this->_table)
                     ->where('id', $node->id)
                     ->update([
                         'level' => $level,
@@ -169,7 +190,7 @@ class Nested extends Model
         }
 
         // ========================= Node move (PARENT) =========================
-        DB::table('categories')
+        DB::table($this->_table)
             ->where('id', $nodeMoveInfo->id)
             ->update([
                 'parent' => $nodeSelectionInfo->id
@@ -183,21 +204,21 @@ class Nested extends Model
      */
     public function detachBranch($nodeMoveID, $options = null)
     {
-        $moveInfo = Categories::find($nodeMoveID);
+        $moveInfo = $this->findById($this->_model, $nodeMoveID);
         $moveLeft = $moveInfo->left;
         $moveRight = $moveInfo->right;
         $totalNode = ($moveRight - $moveLeft + 1) / 2;
 
         // ================================== Node on branch ==================================
         if ($options == null) {
-            $updateNode = DB::table('categories')
+            $updateNode = DB::table($this->_table)
                 ->whereBetween('left', [$moveInfo->left, $moveInfo->right])
                 ->get();
             if (!empty($updateNode)) {
                 foreach ($updateNode as $node) {
                     $leftNew = ($node->left - $moveLeft);
                     $rightNew = ($node->right - $moveRight);
-                    DB::table('categories')
+                    DB::table($this->_table)
                         ->where('id', $node->id)
                         ->update([
                             'left' => $leftNew,
@@ -208,18 +229,18 @@ class Nested extends Model
         }
 
         if ($options['task'] == 'remove-node') {
-            $d = DB::table('categories')
+            $d = DB::table($this->_table)
                 ->whereBetween('left', [(int)$moveInfo->left, (int)$moveInfo->right])
                 ->delete();
         }
         // ================================== Node on tree (LEFT) ==================================
-        $updateNode = DB::table('categories')
+        $updateNode = DB::table($this->_table)
             ->where('left', '>', $moveRight)
             ->get();
         if (!empty($updateNode)) {
             foreach ($updateNode as $node) {
                 $leftNew = $node->left - ($totalNode * 2);
-                DB::table('categories')
+                DB::table($this->_table)
                     ->where('id', $node->id)
                     ->update([
                         'left' => $leftNew
@@ -228,13 +249,13 @@ class Nested extends Model
         }
 
         // ================================== Node on tree (RIGHT) ==================================
-        $updateNode = DB::table('categories')
+        $updateNode = DB::table($this->_table)
             ->where('right', '>', $moveRight)
             ->get();
         if (!empty($updateNode)) {
             foreach ($updateNode as $node) {
                 $rightNew = $node->right - ($totalNode * 2);
-                DB::table('categories')
+                DB::table($this->_table)
                     ->where('id', $node->id)
                     ->update([
                         'right' => $rightNew

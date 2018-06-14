@@ -1,5 +1,22 @@
 @extends('layouts.admin')
 
+@section('footer_js')
+    {!! Html::script('admin/vendors/Chart.js/dist/Chart.min.js') !!}
+    {!! Html::script('admin/vendors/jquery-sparkline/dist/jquery.sparkline.min.js') !!}
+    {!! Html::script('admin/vendors/raphael/raphael.min.js') !!}
+    {!! Html::script('admin/vendors/morris.js/morris.min.js') !!}
+    {!! Html::script('admin/vendors/gauge.js/dist/gauge.min.js') !!}
+    {!! Html::script('admin/vendors/skycons/skycons.js') !!}
+    {!! Html::script('admin/vendors/Flot/jquery.flot.js') !!}
+    {!! Html::script('admin/vendors/Flot/jquery.flot.pie.js') !!}
+    {!! Html::script('admin/vendors/Flot/jquery.flot.time.js') !!}
+    {!! Html::script('admin/vendors/Flot/jquery.flot.stack.js') !!}
+    {!! Html::script('admin/vendors/Flot/jquery.flot.resize.js') !!}
+    {!! Html::script('admin/vendors/flot.orderbars/js/jquery.flot.orderBars.js') !!}
+    {!! Html::script('admin/vendors/flot-spline/js/jquery.flot.spline.min.js') !!}
+    {!! Html::script('admin/vendors/flot.curvedlines/curvedLines.js') !!}
+    {!! Html::script('admin/vendors/DateJS/build/date.js') !!}
+@endsection
 
 @section('content')
 

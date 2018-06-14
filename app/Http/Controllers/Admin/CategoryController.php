@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Images;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Http\Requests\CategoryRequest;
-use App\Categories;
-use Illuminate\Support\Facades\Config;
+use App\Category;
 
 class CategoryController extends Controller
 {
@@ -16,11 +16,8 @@ class CategoryController extends Controller
      */
     public function productIndex()
     {
-        dd($this->_table_list['CATEGORY_PRODUCT']);
-        
-        $breadcrumbs = array('category', null);
-        $categories = DB::table('category_article')->where('left', '>', 0)->orderBy('left', 'ASC')->get();
-        return view('admin.categories.index')->with(compact('categories', 'breadcrumbs'));
+        $categories = DB::table($this->_table_list['CATEGORY_PRODUCT'])->where('left', '>=', 0)->orderBy('left', 'ASC')->get();
+        dd($categories);
     }
 
     /**
@@ -29,7 +26,7 @@ class CategoryController extends Controller
     public function productAdd()
     {
         $breadcrumbs = array('category-add', null);
-        $listCategories = DB::table('categories')->where('left', '>', 0)->orderBy('left', 'ASC')->get();
+        $listCategories = DB::table($this->_table_list['CATEGORY_PRODUCT'])->where('left', '>', 0)->orderBy('left', 'ASC')->get();
 
         $categories = [];
         $categories['1'] = 'Danh mục cha';
@@ -39,6 +36,7 @@ class CategoryController extends Controller
                 $categories[$category->id] = $space . $category->name;
             }
         }
+
         return view('admin.categories.form-category')->with(compact('categories', 'breadcrumbs'));
     }
 
@@ -49,7 +47,7 @@ class CategoryController extends Controller
     {
         $id = $request->get('id');
         $status = $request->get('status');
-        $category = Categories::find($id);
+        $category = Category::find($id);
         $category->status = $status;
         $category->save();
         //return true;
@@ -69,10 +67,10 @@ class CategoryController extends Controller
             'parent' => $request->get('parent')
         );
         if (!empty($request->file('image')))
-            $data['image'] = $this->createImage($image);
+            $data['image'] = Images::createImage($image);
 
         $this->insertNode($data, $request->get('parent'), array('position' => 'right'));
-        return redirect('admin/category/add');
+        return redirect(route('product-category'));
     }
 
     /**
