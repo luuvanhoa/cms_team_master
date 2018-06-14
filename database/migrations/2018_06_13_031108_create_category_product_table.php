@@ -24,9 +24,9 @@ class CreateCategoryProductTable extends Migration
             $table->integer('show_frontend_footer')->nullable(true)->default(1);
             $table->string('image')->nullable(true)->default(null);
             $table->boolean('status')->nullable(true)->default(1); // 1 show, 0 hidden
-            $table->string('description')->nullable(true)->default(null);
+            $table->mediumText('description')->nullable(true)->default(null);
             $table->string('options')->nullable(true)->default(null);
-            $table->string('meta_description')->nullable(true)->default(null);
+            $table->mediumText('meta_description')->nullable(true)->default(null);
             $table->string('meta_title')->nullable(true)->default(null);
             $table->string('meta_keyword')->nullable(true)->default(null);
             $table->dateTime('created_time')->nullable(true)->default(null);

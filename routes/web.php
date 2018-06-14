@@ -48,25 +48,24 @@ Route::group(['prefix' => 'admin','middleware' => ['authadminRoute'] ], function
     // **** BANNER ****
 
     // **** CATEGORIES ARTICLE ****
-    Route::get( 'article-category', ['as' => 'article-category', 'uses' => 'Admin\CategoryController@articleIndex'] );
-    Route::get( 'article-category/add', ['as' => 'article-category-add', 'uses' => 'Admin\CategoryController@articleAddCategory'] );
-    Route::post( 'article-category/add', ['as' => 'article-category-add', 'uses' => 'Admin\CategoryController@articlePostCategory'] );
-    Route::get( 'article-category/edit/{id}', ['as' => 'article-category-edit', 'uses' => 'Admin\CategoryController@articleEditCategory'] );
-    Route::post( 'article-category/edit/{id}', ['as' => 'article-category-edit', 'uses' => 'Admin\CategoryController@articleStoreCategory'] );
-    Route::get( 'article-category/del/{id}', ['as' => 'article-category-del', 'uses' => 'Admin\CategoryController@articleDelCategory'] );
-    Route::post( 'article-category/change-status', ['as'=>'article-category-status', 'uses'=> 'Admin\CategoryController@articleChangeStatus'] );
+    Route::get( 'article-category', ['as' => 'article-category', 'uses' => 'Admin\CategoryArticleController@articleIndex'] );
+    Route::get( 'article-category-add.html', ['as' => 'article-category-add', 'uses' => 'Admin\CategoryArticleController@articleAdd'] );
+    Route::post( 'article-category-add.html', ['as' => 'article-category-add', 'uses' => 'Admin\CategoryArticleController@articlePost'] );
+    Route::get( 'article-category-edit-{id}.html', ['as' => 'article-category-edit', 'uses' => 'Admin\CategoryArticleController@articleEdit'] );
+    Route::post( 'article-category-edit-{id}.html', ['as' => 'article-category-edit', 'uses' => 'Admin\CategoryArticleController@articleStore'] );
+    Route::get( 'article-category-del-{id}.html', ['as' => 'article-category-del', 'uses' => 'Admin\CategoryArticleController@articleDel'] );
+    Route::post( 'article-category/change-status', ['as'=>'article-category-status', 'uses'=> 'Admin\CategoryArticleController@articleChangeStatus'] );
     // **** CATEGORIES ARTICLE ****
 
     // **** CATEGORIES PRODUCT ****
-    Route::get( 'product-category', ['as' => 'product-category', 'uses' => 'Admin\CategoryController@productIndex'] );
-    Route::get( 'product-category/add', ['as' => 'product-category-add', 'uses' => 'Admin\CategoryController@productAdd'] );
-    Route::post( 'product-category/add', ['as' => 'product-category-add', 'uses' => 'Admin\CategoryController@productPost'] );
-    Route::get( 'product-category/edit/{id}', ['as' => 'product-category-edit', 'uses' => 'Admin\CategoryController@productEdit'] );
-    Route::post( 'product-category/edit/{id}', ['as' => 'product-category-edit', 'uses' => 'Admin\CategoryController@productStore'] );
-    Route::get( 'product-category/del/{id}', ['as' => 'product-category-del', 'uses' => 'Admin\CategoryController@productDelete'] );
-    Route::post( 'product-category/change-status', ['as'=>'product-category-status', 'uses'=> 'Admin\CategoryController@productChangeStatus'] );
+    Route::get( 'product-category', ['as' => 'product-category', 'uses' => 'Admin\CategoryProductController@productIndex'] );
+    Route::get( 'product-category-add.html', ['as' => 'product-category-add', 'uses' => 'Admin\CategoryProductController@productAdd'] );
+    Route::post( 'product-category-add.html', ['as' => 'product-category-add', 'uses' => 'Admin\CategoryProductController@productPost'] );
+    Route::get( 'product-category-edit-{id}.html', ['as' => 'product-category-edit', 'uses' => 'Admin\CategoryProductController@productEdit'] );
+    Route::post( 'product-category-edit-{id}.html', ['as' => 'product-category-edit', 'uses' => 'Admin\CategoryProductController@productStore'] );
+    Route::get( 'product-category-del-{id}.html', ['as' => 'product-category-del', 'uses' => 'Admin\CategoryProductController@productDelete'] );
+    Route::post( 'product-category/change-status', ['as'=>'product-category-status', 'uses'=> 'Admin\CategoryProductController@productChangeStatus'] );
     // **** CATEGORIES PRODUCT ****
-
 
     // **** PRODUCT ****
     Route::get( 'post', ['as' => 'post', 'uses' => 'Admin\PostController@index'] );

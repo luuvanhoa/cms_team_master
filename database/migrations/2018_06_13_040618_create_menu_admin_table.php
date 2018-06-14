@@ -19,7 +19,7 @@ class CreateMenuAdminTable extends Migration
             $table->string('name');
             $table->string('catecode');
             $table->boolean('status')->nullable(true)->default(1); // 1 show, 0 hidden
-            $table->string('description')->nullable(true)->default(null);
+            $table->mediumText('description')->nullable(true)->default(null);
             $table->dateTime('created_time');
             $table->dateTime('modified_time')->nullable(true)->default(null);
 

@@ -29,7 +29,7 @@
 							'class' => 'form-horizontal ',
 							'method' => 'POST',
 							'enctype' => "multipart/form-data",
-							'url'=> route('product-category-add')
+							'url'=> $url
 						)) !!}
 							<fieldset>
 								<legend>Nhập thông tin danh mục</legend>

@@ -25,16 +25,16 @@ class CreateCategoryArticleTable extends Migration
             $table->integer('show_frontend_footer');
             $table->string('image')->nullable(true)->default(null);
             $table->boolean('status')->nullable(true)->default(1); // 1 show, 0 hidden
-            $table->string('description')->nullable(true)->default(null);
+            $table->mediumText('description')->nullable(true)->default(null);
             $table->string('options')->nullable(true)->default(null);
-            $table->string('meta_description')->nullable(true)->default(null);
+            $table->mediumText('meta_description')->nullable(true)->default(null);
             $table->string('meta_title')->nullable(true)->default(null);
             $table->string('meta_keyword')->nullable(true)->default(null);
             $table->dateTime('created_time')->nullable(true)->default(null);
             $table->dateTime('modified_time')->nullable(true)->default(null);
 
             // nested
-            $table->string('fullcate_parent');
+            $table->string('fullcate_parent')->nullable(true)->default(null);
             $table->integer('parent')->nullable(true)->default(0);
             $table->integer('left');
             $table->integer('right');

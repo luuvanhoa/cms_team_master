@@ -16,7 +16,7 @@ class CreateAuthorArticleTable extends Migration
         Schema::create('author_article', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('author_name');
-            $table->string('description')->nullable(true)->default(null);
+            $table->mediumText('description')->nullable(true)->default(null);
             $table->integer('avatar')->nullable(true)->default(null);
             $table->integer('share_url')->nullable(true)->default(null);
             $table->integer('status')->nullable(true)->default(0);
