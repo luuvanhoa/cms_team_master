@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('title');
             $table->string('lead');
-            $table->string('description')->nullable(true)->default(null);
+            $table->mediumText('description')->nullable(true)->default(null);
             $table->string('share_url')->nullable(true)->default(null);
             $table->longText('content');
             $table->string('thumbnail_url')->nullable(true)->default(null);

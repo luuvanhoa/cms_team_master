@@ -6,8 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Category' => $baseDir . '/app/Category.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Helpers\\Images' => $baseDir . '/app/Helpers/Images.php',
     'App\\Http\\Controllers\\Admin\\BannerController' => $baseDir . '/app/Http/Controllers/Admin/BannerController.php',
     'App\\Http\\Controllers\\Admin\\CategoryController' => $baseDir . '/app/Http/Controllers/Admin/CategoryController.php',
     'App\\Http\\Controllers\\Admin\\ConfigController' => $baseDir . '/app/Http/Controllers/Admin/ConfigController.php',
@@ -28,6 +30,13 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Http\\Requests\\BannerRequest' => $baseDir . '/app/Http/Requests/BannerRequest.php',
+    'App\\Http\\Requests\\CategoryRequest' => $baseDir . '/app/Http/Requests/CategoryRequest.php',
+    'App\\Http\\Requests\\LoginAdminRquest' => $baseDir . '/app/Http/Requests/LoginAdminRquest.php',
+    'App\\Http\\Requests\\PostRequest' => $baseDir . '/app/Http/Requests/PostRequest.php',
+    'App\\Http\\Requests\\ProductRequest' => $baseDir . '/app/Http/Requests/ProductRequest.php',
+    'App\\Http\\Requests\\Request' => $baseDir . '/app/Http/Requests/Request.php',
+    'App\\Nested' => $baseDir . '/app/Nested.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

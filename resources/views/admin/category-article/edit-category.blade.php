@@ -29,7 +29,7 @@
                                 'class' => 'form-horizontal ',
                                 'method' => 'POST',
                                 'enctype' => "multipart/form-data",
-                                'url'=> route('product-category-edit', $category->id)
+                                'url'=> $url
                             )) !!}
 							<fieldset>
 								<legend>Nhập thông tin danh mục</legend>
@@ -139,10 +139,10 @@
                                             $show = ($category->status == 1);
                                             ?>
 											<div class="radio">
-												<label>{{ Form::radio('status',$category->status, $show, ['class' => 'flat']) }} Hiển thị</label>
+												<label>{{ Form::radio('status',1, $show, ['class' => 'flat']) }} Hiển thị</label>
 											</div>
 											<div class="radio">
-												<label>{{ Form::radio('status',$category->status, $hidden, ['class' => 'flat']) }} Không hiển thị</label>
+												<label>{{ Form::radio('status',0, $hidden, ['class' => 'flat']) }} Không hiển thị</label>
 											</div>
 										</div>
 									</div>

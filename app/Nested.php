@@ -21,9 +21,8 @@ class Nested extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-
-        $attributes['model'] = (!isset($attributes['model']) || !empty($attributes['model'])) ? 'Category' : $attributes['model'];
-        $attributes['table'] = (!isset($attributes['table']) || !empty($attributes['table'])) ? 'category_product' : $attributes['table'];
+        $attributes['model'] = (!isset($attributes['model']) || empty($attributes['model'])) ? 'CategoryProduct' : $attributes['model'];
+        $attributes['table'] = (!isset($attributes['table']) || empty($attributes['table'])) ? 'category_product' : $attributes['table'];
 
         $model = "App\\" . ucfirst($attributes['model']);
         $this->_model = new $model;

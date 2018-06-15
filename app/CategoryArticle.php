@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Category extends Model
+class CategoryArticle extends Model
 {
-    public $table = 'category_product';
+    public $table = 'category_article';
 
     protected $fillable = [
         'name',
@@ -32,6 +32,16 @@ class Category extends Model
         'right'
     ];
 
+    public function setTable($_table)
+    {
+        $this->table = $_table;
+    }
+
+    public function getTable()
+    {
+        return $this->table;
+    }
+
     public function mapsDataDefault($data)
     {
         return array(
@@ -51,7 +61,7 @@ class Category extends Model
             'meta_keyword' => isset($data['meta_keyword']) ? $data['meta_keyword'] : null,
             'created_time' => isset($data['created_time']) ? $data['created_time'] : date('Y-m-d H:i:s'),
             'modified_time' => isset($data['modified_time']) ? $data['modified_time'] : null,
-            'fullcate_parent' => isset($data['fullcate_parent']) ? $data['fullcate_parent'] : null
+            'fullcate_parent' => isset($data['fullcate_parent']) ? $data['fullcate_parent'] : ''
         );
     }
 

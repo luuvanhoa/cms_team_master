@@ -2,31 +2,28 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
+use App\CategoryProduct;
+use App\CategoryArticle;
 use App\Helpers\Images;
 use App\Nested;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\CategoryArticleRequest;
 use Illuminate\Support\Facades\DB;
 
-class CategoryController extends Controller
+class CategoryProductController extends Controller
 {
-    protected $_nestedCateProduct = null;
-    protected $_nestedCateArticle = null;
-    protected $_nestedCateMenuAdmin = null;
-
-    protected $_modelCategory = null;
+    protected $_nestedCategoryProduct = null;
+    protected $_modelCategoryProduct = null;
 
     public function __construct()
     {
-        $this->_nestedCateProduct = new Nested(array(
+        $this->_modelCategoryProduct = new CategoryProduct();
+        $this->_nestedCategoryProduct = new Nested(array(
             'table' => 'category_product',
-            'model' => 'Category'
+            'model' => 'CategoryProduct'
         ));
-        $this->_modelCategory = new Category();
-        $this->_nestedCateArticle = null;
-        $this->_nestedCateMenuAdmin = null;
     }
 
     /**
@@ -34,8 +31,11 @@ class CategoryController extends Controller
      */
     public function productIndex()
     {
-        $categories = DB::table($this->_modelCategory->table)->where('left', '>', 0)->orderBy('left', 'ASC')->get();
-        return view('admin.categories.index')->with(compact('categories'));
+        $categories = DB::table($this->_modelCategoryProduct->table)->where('left', '>', 0)->orderBy('left', 'ASC')->get();
+        $url = route('product-category-add');
+        $urlChangeStatus = route('product-category-status');
+        $aliasRouter = 'product-category-edit';
+        return view('admin.category-product.index')->with(compact('categories', 'url', 'urlChangeStatus', 'aliasRouter'));
     }
 
     /**
@@ -43,18 +43,17 @@ class CategoryController extends Controller
      */
     public function productAdd()
     {
-        $listCategories = DB::table($this->_modelCategory->table)->where('left', '>', 0)->orderBy('left', 'ASC')->get();
-
+        $listCategories = DB::table($this->_modelCategoryProduct->table)->where('left', '>', 0)->orderBy('left', 'ASC')->get();
         $categories = [];
-        $categories['1'] = 'Danh mục cha';
+        $categories['1000000'] = 'Danh mục cha';
         if (!empty($listCategories)) {
             foreach ($listCategories as $category) {
                 $space = str_repeat('|——', $category->level - 1);
                 $categories[$category->id] = $space . $category->name;
             }
         }
-
-        return view('admin.categories.form-category')->with(compact('categories'));
+        $url = route('product-category-add');
+        return view('admin.category-product.form-category')->with(compact('categories', 'url'));
     }
 
     /**
@@ -64,7 +63,7 @@ class CategoryController extends Controller
     {
         $id = $request->get('id');
         $status = $request->get('status');
-        $category = $this->findById($this->_modelCategory, $id);
+        $category = $this->findById($this->_modelCategoryProduct, $id);
         $category->status = $status;
         $category->save();
     }
@@ -75,7 +74,7 @@ class CategoryController extends Controller
      */
     public function productPost(CategoryRequest $request)
     {
-        $data = $this->_modelCategory->mapsDataDefault($request->all());
+        $data = $this->_modelCategoryProduct->mapsDataDefault($request->all());
         if (!empty($request->file('image'))) {
             $image = $request->file('image');
             $data['image'] = Images::createImage($image);
@@ -83,7 +82,7 @@ class CategoryController extends Controller
 
         $parent = intval($request->get('parent'));
         if ($parent > 0) {
-            $this->_nestedCateProduct->insertNode($data, $parent, array('position' => 'right'));
+            $this->_nestedCategoryProduct->insertNode($data, $parent, array('position' => 'right'));
         }
 
         return redirect(route('product-category'));
@@ -95,13 +94,13 @@ class CategoryController extends Controller
      */
     public function productEdit($id)
     {
-        $category = $this->findById($this->_modelCategory, $id);
-        $breadcrumbs = array('category-edit', $category);
-        $categories = DB::table($this->_modelCategory->table)
+        $category = $this->findById($this->_modelCategoryProduct, $id);
+
+        $categories = DB::table($this->_modelCategoryProduct->table)
             ->where('left', '>', 0)
             ->orderBy('left', 'ASC')->get();
-        return view('admin.categories.edit-category')
-            ->with(compact('category', 'breadcrumbs', 'categories'));
+        $url = route('product-category-edit', $id);
+        return view('admin.category-product.edit-category')->with(compact('category', 'categories', 'url'));
     }
 
     /**
@@ -111,7 +110,7 @@ class CategoryController extends Controller
      */
     public function productStore($id, Request $request)
     {
-        $data = $this->_modelCategory->mapsDataDefault($request->all());
+        $data = $this->_modelCategoryProduct->mapsDataDefault($request->all());
         if (!empty($request->file('image'))) {
             $image = $request->file('image');
             $data['image'] = Images::createImage($image);
@@ -127,10 +126,10 @@ class CategoryController extends Controller
     protected function updateNodeCategoryProduct($data, $nodeID, $nodeParentID = null)
     {
         if (!empty($nodeParentID)) {
-            $nodeParentInfo = $this->findById($this->_modelCategory, $nodeParentID);
-            $nodeInfo = $this->findById($this->_modelCategory, $nodeID);
+            $nodeParentInfo = $this->findById($this->_modelCategoryProduct, $nodeParentID);
+            $nodeInfo = $this->findById($this->_modelCategoryProduct, $nodeID);
             if (!empty($nodeParentInfo) && $nodeInfo->parent != $nodeParentInfo->id) {
-                $this->_nestedCateProduct->moveRight($nodeID, $nodeParentID);
+                $this->_nestedCategoryProduct->moveRight($nodeID, $nodeParentID);
             }
         }
 
@@ -141,7 +140,7 @@ class CategoryController extends Controller
             }
         }
 
-        DB::table($this->_modelCategory->table)
+        DB::table($this->_modelCategoryProduct->table)
             ->where('id', $nodeID)
             ->update($dataUpdate);
     }
@@ -152,20 +151,17 @@ class CategoryController extends Controller
      */
     public function productDelete($id)
     {
-        $categories = Categories::find($id);
-        $this->deleteImage($categories->path);
-
-        $nodeInfo = Categories::find($id);
+        $category = $this->findById($this->_modelCategoryProduct, $id);
+        $this->deleteImage($category->path);
         $nodes = DB::table('categories')->where('parent', $id)->orderBy('left', 'ASC')->get();
 
         if (!empty($nodes)) {
             foreach ($nodes as $node) {
-                $this->moveRight($node->id, $nodeInfo->parent);
+                $this->moveRight($node->id, $category->parent);
             }
         }
-        $this->detachBranch($id, array('task' => 'remove-node'));
+        $this->_nestedCategoryProduct->detachBranch($id, array('task' => 'remove-node'));
 
         return redirect('/admin/category');
     }
-
 }

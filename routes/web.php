@@ -57,6 +57,10 @@ Route::group(['prefix' => 'admin','middleware' => ['authadminRoute'] ], function
     Route::get( 'product-category-del-{id}.html', ['as' => 'product-category-del', 'uses' => 'Admin\CategoryProductController@productDelete'] );
     Route::post( 'product-category/change-status', ['as'=>'product-category-status', 'uses'=> 'Admin\CategoryProductController@productChangeStatus'] );
     // **** CATEGORIES PRODUCT ****
+<<<<<<< HEAD
+=======
+
+>>>>>>> b23d06d9810afbc24adb33ae84bf2169f4534932
     // **** PRODUCT ****
     Route::get( 'post', ['as' => 'post', 'uses' => 'Admin\PostController@index'] );
     Route::get( 'post/add', ['as' => 'post-add', 'uses' => 'Admin\PostController@addPost'] );

@@ -9,7 +9,7 @@ class CategorySeeder extends Seeder
     {
         DB::table('category_product')->delete();
         DB::table('category_product')->insert([
-            'id' => 1,
+            'id' => 1000000,
             'name' => 'Root',
             'parent' => 0,
             'left' => 0,
@@ -34,7 +34,7 @@ class CategorySeeder extends Seeder
 
         DB::table('menu_admin')->delete();
         DB::table('menu_admin')->insert([
-            'id' => 1,
+            'id' => 1000000,
             'name' => 'Root',
             'parent' => 0,
             'left' => 0,
@@ -50,7 +50,7 @@ class CategorySeeder extends Seeder
 
         DB::table('category_article')->delete();
         DB::table('category_article')->insert([
-            'id' => 1,
+            'id' => 1000000,
             'name' => 'Root',
             'parent' => 0,
             'left' => 0,

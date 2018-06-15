@@ -16,7 +16,7 @@ class CreateTagArticleTable extends Migration
         Schema::create('tag_article', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('tag_name');
-            $table->string('description')->nullable(true)->default(null);
+            $table->mediumText('description')->nullable(true)->default(null);
             $table->integer('status')->nullable(true)->default(0);
             $table->dateTime('created_time')->nullable(true)->default(null);
             $table->dateTime('modified_time')->nullable(true)->default(null);
